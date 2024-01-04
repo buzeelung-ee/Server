@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-screen flex flex-col items-center  bg-white p-4">
+    <div class="w-full flex flex-col items-center  bg-white p-4">
         <img className="mx-auto" :src="lgUrl" />
         <div class="bg-white w-full flex flex-col justify-end items-center mt-2">
             <div class="rounded-lg border bg-card text-card-foreground shadow-sm m-4" data-v0-t="card" >
@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div id="map" style="width:100%; height:inherit;" ></div>
+        <div id="map"  ></div>
         <div class="" v-show="isTextFinish">
             <div class="rounded-lg border bg-card text-card-foreground shadow-sm m-4" data-v0-t="card" >
                 <button @click="nextStep()" class="py-4 px-6 text-sm text-gray-500 dark:text-gray-400">
@@ -75,6 +75,15 @@
 
     const mapName = ref("")
 
+    const _getMapSize = () => {
+        if(window.innerWidth < 768)
+            return window.innerWidth - 30
+        else if(window.innerWidth < 1120)
+            return window.innerWidth - 100
+        else 
+            return 1024
+    }
+
     onMounted(() => {
         if(!route.query.mapName)
             router.push({path: '/'})
@@ -88,8 +97,10 @@
 
         map = new naver.maps.Map('map', {
             center: new naver.maps.LatLng(33.427337, 126.575834),
-            zoom: 10
+            zoom: 10,
         });
+
+        map.setSize(new naver.maps.Size(_getMapSize(), _getMapSize()));
 
         typing("유사업종이 " + (c_유사업종수.value ? "많" : "적") + "으면서<br/>"
         + "이용자수가 " + (c_이용자수.value ? "많" : "적") + "고<br/>"

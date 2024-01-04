@@ -7,7 +7,10 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
+
+const https = require('https');
+const fs = require('fs');
 
 process.on('uncaughtException', (error, origin) => {
   console.log('----- Uncaught exception -----')
@@ -36,4 +39,15 @@ app.listen(port, () => console.log(`Server listening on port ${port}`));
 app.use(express.static(path.join(__dirname, './public')));
 app.get('*', function (요청, 응답) {
   응답.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+const httpsOptions = {
+        key: fs.readFileSync('/etc/letsencrypt/live/bzr.itsabout.today/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/bzr.itsabout.today/fullchain.pem')
+}
+
+const httpsServer = https.createServer(httpsOptions, app);
+
+httpsServer.listen(443, () => {
+        console.log('HTTPS server listening on port 443');
 });
