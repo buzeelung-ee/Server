@@ -101,6 +101,11 @@
     })
 
     const nextStep = async () => {
+        if(businessType.value == "" || businessType.value != "음식점") {
+            alert("부지의 목적을 선택해주세요.\n현재 음식점만 선택이 가능합니다!");
+            return;
+        }
+
         isLoading.value = true;
         const response = await fetch('/api/getRecommender', {
             method: 'POST',
