@@ -1,0 +1,22 @@
+< class 설명 >
+yellow -> 건물
+red -> 도로
+blue -> 농경지
+green -> 산림
+black -> 배경
+
+
+< 실행 명령어 >
+python [pyfile 경로]/inference.py --input_path=[input data 경로] --output_path=[output data 저장 경로] --output_file_name=[output data 이름]
+Ex) python infer.py --input_path="./data.jpg" --output_path="./output_folder/" --output_file_name="output.jpg"
+
+
+< pip list >
+gpu서버 => pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+cpu서버 => pip3 install torch torchvision torchaudio
+
+matplotlib
+numpy
+opencv-python
+albumentations
+tqdm
