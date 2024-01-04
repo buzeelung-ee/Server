@@ -10,7 +10,7 @@
         <div class="" v-show="isTextFinish">
             <div class="w-full items-center align-center text-center text-gray-900 text-sm">
                 위성 사진
-                <img :src="'/api/image/' + mapName + '.jpeg'"/>
+                <img :src="'/api/image/' + mapName + '.jpeg'" class="w-full h-auto"/>
             </div>
             <div class="w-full items-center align-center text-center text-gray-900 text-sm mt-5">
                 토지 피복지도
