@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div id="map" style="width:100%;height:400px;"></div>
+        <div id="map" style="width:100%; height:inherit;" ></div>
         <div class="" v-show="isTextFinish">
             <div class="rounded-lg border bg-card text-card-foreground shadow-sm m-4" data-v0-t="card" >
                 <button @click="nextStep()" class="py-4 px-6 text-sm text-gray-500 dark:text-gray-400">
