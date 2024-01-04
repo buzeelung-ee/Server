@@ -18,9 +18,9 @@
             </div>
             <div class="w-full items-center align-center text-center text-gray-900 text-sm mt-5">
                 블렌딩 사진
-                <div class="relative " style="width: 500px; height: 500px; margin: 0 auto;">
-                    <img :src="'/api/image/' + mapName + '.jpeg'" class="img" style="width:500px; height:500px margin: 0 auto;" />
-                    <img :src="'/api/image/' + mapName + '_blending.jpeg'" class="img cover" style="width:500px; height:500px margin: 0 auto;"/>
+                <div class="relative " style="width: 400px; height: 400px; margin: 0 auto;">
+                    <img :src="'/api/image/' + mapName + '.jpeg'" class="img"  />
+                    <img :src="'/api/image/' + mapName + '_blending.jpeg'" class="img cover" />
                 </div>
             </div>
             <div class="w-full items-center align-center text-center text-gray-900 text-sm mt-5" style="">

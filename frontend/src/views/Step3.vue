@@ -16,6 +16,12 @@
             </div>
         </div>
     </div>
+    <div v-if="isLoading" class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+        <div class="text-center text-white">
+        <p class="text-xl font-semibold">부지렁이가 움직이는 중...</p>
+        <!-- 추가적으로 로딩 아이콘 또는 메시지 등을 넣을 수 있습니다 -->
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -28,6 +34,8 @@
     const text = ref("");
     const textLength = ref(0);
     const isTextFinish = ref(false);
+
+    const isLoading = ref(false);
 
     const businessType = ref("");
     const c_유사업종수 = ref(false);
@@ -114,6 +122,7 @@
     }
     
     const nextStep = async () => {
+        isLoading.value = true;
         const response = await fetch('/api/getRecommenderReason', {
             method: 'POST',
             headers: {
@@ -133,9 +142,11 @@
 
         if(!result.result) {
             alert(result.error);
+            isLoading.value = false;
             return;
         }
 
+        isLoading.value = false;
 
         router.push({path: "/step4", query: {
             businessType: businessType.value,
